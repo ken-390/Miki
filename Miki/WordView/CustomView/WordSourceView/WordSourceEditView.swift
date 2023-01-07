@@ -128,8 +128,13 @@ extension WordSourceEditView: UIPickerViewDelegate, UIPickerViewDataSource {
        return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        self.sectionList = GetSectionItem.getSectionItems(parentId: self.source_media!.id)
-        return self.sectionList.count + 1
+        if (self.source_media != nil) {
+            self.sectionList = GetSectionItem.getSectionItems(parentId: self.source_media!.id)
+            return self.sectionList.count + 1
+        }
+        else {
+            return 1
+        }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var text: String = ""

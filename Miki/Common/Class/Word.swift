@@ -11,7 +11,6 @@ import RealmSwift
 class Word: Object{
     @objc dynamic var id: String? = nil
     @objc dynamic var type_id: Int = 0
-    var type: Type = Type.basic
     @objc dynamic var title: String? = nil
     @objc dynamic var text: String? = nil
     @objc dynamic var mediaId: String = ""
@@ -29,19 +28,7 @@ class Word: Object{
     }
     init(id: String, type_id: Int, title: String, text: String, mediaId: String, sectionId: String){
         self.id = id
-        self.type_id = type_id
-        switch(type_id){
-        case 0:
-            self.type = Type.basic
-            break
-        case 1:
-            self.type = Type.person
-            break
-        case 3:
-            self.type = Type.event
-        default:
-            break
-        }
+        self.type_id = 0
         self.title = title
         self.text = text
         self.mediaId = mediaId

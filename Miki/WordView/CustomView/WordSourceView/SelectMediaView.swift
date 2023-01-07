@@ -76,6 +76,11 @@ class SelectMediaView: UIView {
         self.removeFromSuperview()
     }
     @objc func okBtn_onTap(_ sender: UIButton) {
+        if(tableView.indexPathForSelectedRow == nil) {
+            // 選択行がないとき，画面をそのまま閉じる.
+            self.removeFromSuperview()
+            return
+        }
         if(tableView.indexPathForSelectedRow!.row < self.medias.count) {
             let selected: Media = medias[tableView.indexPathForSelectedRow!.row]
             if(self.this.source_media != selected) {
@@ -83,12 +88,14 @@ class SelectMediaView: UIView {
                 self.this.mediaSelectField.text = selected.title
                 self.this.source_section = nil
                 self.this.sectionSelectField.text = OTHER_NON_SELECT
+                self.this.setSectionBtn.isEnabled = true
             }
         } else {
             self.this.source_media = nil
             self.this.mediaSelectField.text = OTHER_NON_SELECT
             self.this.source_section = nil
-            self.this.sectionSelectField.text = OTHER_NON_SELECT
+            self.this.sectionSelectField.text = "---"
+            self.this.setSectionBtn.isEnabled = false
         }
         self.removeFromSuperview()
     }

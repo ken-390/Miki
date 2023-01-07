@@ -25,14 +25,13 @@ class EditViewController: UIViewController {
     var viewMode: EditViewMode = .add
     var parentView: SectionViewController? = nil
     var parentDelegate: EditViewControllerDelegate?
-    var selectedType: Type = Type.basic
     // Property
     var source_media: Media? = nil
     var source_section: SectionItem? = nil
     
     // ツールバー
     @IBOutlet weak var toolBar: UIView!
-    @IBOutlet weak var setTypeButton: UIButton!
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     // メイン
     @IBOutlet weak var mainView: UIView!
@@ -48,7 +47,7 @@ class EditViewController: UIViewController {
         
         // Set Layout
         setToolBar()
-        setMainView(type: "")
+        setMainView()
         self.view.bringSubviewToFront(mainView)
         self.view.bringSubviewToFront(toolBar)
     }
@@ -145,20 +144,8 @@ class EditViewController: UIViewController {
     }
     
     func setWord() -> Word{
-        var type_id: Int = 0
-        switch(selectedType){
-        case .basic:
-            type_id = 0
-            break
-        case .person:
-            type_id = 1
-            break
-        case .event:
-            type_id = 3
-            break
-        }
         let newWord: Word = Word(id: self.word.id ?? "",
-                                 type_id: type_id,
+                                 type_id: 0,
                                  title: titleView!.titleTextField.text!,
                                  text: textView!.textArea.text!,
                                  mediaId: sourceView!.source_media == nil ? "" : sourceView!.source_media!.id,
@@ -194,15 +181,10 @@ class EditViewController: UIViewController {
         toolBar.layer.shadowOpacity = 0.3
         toolBar.layer.shadowRadius = 6
         
-        selectedType = word.type
-        let font: UIFont = UIFont.systemFont(ofSize: 24)
-        configureTypeMenu(button: setTypeButton, font: font)
-        let width = selectedType.title.widthOfString(usingFont: font)
-        let height = selectedType.title.heightOfString(usingFont: font)
-        setTypeButton.frame = CGRect(x: toolBar.frame.width*0.5-width*0.5,
-                                     y: toolBar.frame.height*0.5-height*0.4,
-                                     width: width,
-                                     height: height)
+        topLabel.font = .systemFont(ofSize: 24.0)
+        topLabel.text = "Word"
+        topLabel.frame.size.width = topLabel.getFitWidth()
+        topLabel.frame.size.height = topLabel.getFitHeight()
         
         saveButton.configuration?.title = ""
         saveButton.configuration?.image = UIImage(systemName: "checkmark")
@@ -211,24 +193,14 @@ class EditViewController: UIViewController {
                                    width: saveButton_w,
                                    height: button_h)
     }
-    func setMainView(type: String){
-        var mainView_h: Double = 0
+    func setMainView(){
         // Remove SubView from MainView
         let subviews = mainView.subviews
         for subview in subviews {
             subview.removeFromSuperview()
         }
         
-        switch(selectedType.title){
-        case "Word":
-            mainView_h = setView_typeDefault()
-            break
-        case "Person":
-            mainView_h = setView_typePerson()
-            break
-        default:
-            break
-        }
+        let mainView_h: Double = setView_typeDefault()
         
         // Set MainView.frame
         mainView.frame = CGRect(x: 0,
@@ -237,28 +209,6 @@ class EditViewController: UIViewController {
                                 height: mainView_h)
         scrollView.frame = self.view.frame
         scrollView.contentSize = CGSize(width: mainView.frame.size.width, height: mainView.frame.size.height)
-    }
-    func configureTypeMenu(button: UIButton, font: UIFont){
-        let actions = Type.allCases
-            .compactMap { type in
-                UIAction(
-                    title: type.title,
-                    state: type == selectedType ? .on : .off,
-                    handler: { [self] _ in
-                        let width = type.title.widthOfString(usingFont: font)
-                        self.selectedType = type
-                        self.configureTypeMenu(button: button, font: font)
-                        self.setTypeButton.frame = CGRect(x: self.toolBar.frame.width*0.5-width*0.5,
-                                                          y: self.setTypeButton.frame.minY,
-                                                          width: width,
-                                                          height: self.setTypeButton.frame.height)
-                        setMainView(type: selectedType.title)
-                    })
-            }
-        setTypeButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
-        setTypeButton.showsMenuAsPrimaryAction = true
-        setTypeButton.setTitle(selectedType.title, for: .normal)
-        setTypeButton.titleLabel?.font = font
     }
     
     // Type: Default
@@ -279,21 +229,6 @@ class EditViewController: UIViewController {
         textView!.setView()
         self.mainView.addSubview(textView!)
 
-        return textView!.frame.maxY+UIScreen.main.bounds.height*0.5
-    }
-    // Type: Pearson
-    func setView_typePerson() -> Double{
-        // Title
-        self.titleView = TitleEditView(parent: self, word: self.word, upperView: nil)
-        titleView!.setData()
-        titleView!.setView()
-        self.mainView.addSubview(titleView!)
-        // Text
-        self.textView = TextEditView(parent: self, word: self.word, upperView: titleView)
-        textView!.setData()
-        textView!.setView()
-        self.mainView.addSubview(textView!)
-        
         return textView!.frame.maxY+UIScreen.main.bounds.height*0.5
     }
 }

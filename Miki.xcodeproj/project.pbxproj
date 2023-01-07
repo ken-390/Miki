@@ -31,7 +31,6 @@
 		A652ABE02928C89700393B57 /* SelectMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652ABDF2928C89700393B57 /* SelectMediaView.swift */; };
 		A65B8C3E28F3CD360000AAB1 /* TitleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B8C3D28F3CD360000AAB1 /* TitleEditView.swift */; };
 		A65B8C4128F3DAA30000AAB1 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B8C4028F3DAA30000AAB1 /* TextEditView.swift */; };
-		A66ECF0E28F4384C00C4F74C /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66ECF0D28F4384C00C4F74C /* Type.swift */; };
 		A67612B128E03A1200C81D19 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67612B028E03A1200C81D19 /* EditViewController.swift */; };
 		A67612B428E1A75E00C81D19 /* Dao_word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67612B328E1A75E00C81D19 /* Dao_word.swift */; };
 		A67612B728E1DC2A00C81D19 /* CreateWordRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67612B628E1DC2900C81D19 /* CreateWordRecord.swift */; };
@@ -137,7 +136,6 @@
 		A652ABDF2928C89700393B57 /* SelectMediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMediaView.swift; sourceTree = "<group>"; };
 		A65B8C3D28F3CD360000AAB1 /* TitleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleEditView.swift; sourceTree = "<group>"; };
 		A65B8C4028F3DAA30000AAB1 /* TextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
-		A66ECF0D28F4384C00C4F74C /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		A67612B028E03A1200C81D19 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A67612B328E1A75E00C81D19 /* Dao_word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao_word.swift; sourceTree = "<group>"; };
 		A67612B628E1DC2900C81D19 /* CreateWordRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWordRecord.swift; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 		A6891C1B291BDFA800063617 /* CaseIterable */ = {
 			isa = PBXGroup;
 			children = (
-				A66ECF0D28F4384C00C4F74C /* Type.swift */,
 				A6891C19291BCA9E00063617 /* SortMode.swift */,
 			);
 			path = CaseIterable;
@@ -885,7 +882,6 @@
 				A6CD186F292BB23400263705 /* UpdateMedia.swift in Sources */,
 				A65B8C3E28F3CD360000AAB1 /* TitleEditView.swift in Sources */,
 				A6891C09291A173500063617 /* SearchMediaViewController.swift in Sources */,
-				A66ECF0E28F4384C00C4F74C /* Type.swift in Sources */,
 				A6891BF12904059700063617 /* Image.swift in Sources */,
 				A652ABD92926F96700393B57 /* SectionViewController.swift in Sources */,
 				A67612BB28E1DD4D00C81D19 /* Result.swift in Sources */,

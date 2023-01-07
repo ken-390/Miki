@@ -96,13 +96,13 @@
                                             <action selector="saveButton_onTap:" destination="AVx-yf-5s9" eventType="touchDown" id="2FW-qA-C5C"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXc-52-Vy4">
-                                        <rect key="frame" x="161" y="12" width="54" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYL-Ve-Y2g">
+                                        <rect key="frame" x="166" y="23" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" systemColor="linkColor"/>
-                                        </state>
-                                    </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -114,8 +114,8 @@
                         <outlet property="mainView" destination="Vjh-Nl-8M8" id="d4z-CZ-AGL"/>
                         <outlet property="saveButton" destination="Pqk-DH-Aj3" id="vdv-MP-9QK"/>
                         <outlet property="scrollView" destination="oYZ-vc-lft" id="lGh-xA-7cz"/>
-                        <outlet property="setTypeButton" destination="LXc-52-Vy4" id="jl3-4T-nfO"/>
                         <outlet property="toolBar" destination="c4M-ov-pFX" id="XQT-mS-Hmp"/>
+                        <outlet property="topLabel" destination="qYL-Ve-Y2g" id="eu7-9S-EwB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qoJ-Pn-cCE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,9 +162,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
