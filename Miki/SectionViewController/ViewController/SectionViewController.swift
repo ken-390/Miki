@@ -70,5 +70,9 @@ extension SectionViewController: UITableViewDataSource {
     }
 }
 extension SectionViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected = words[indexPath.row]
+        let wordShowView = WordShowView(parent: self, word: selected)
+        self.view.addSubview(wordShowView)
+    }
 }
