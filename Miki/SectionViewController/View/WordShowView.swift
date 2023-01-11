@@ -12,6 +12,7 @@ class WordShowView: UIView {
     // 画面項目
     let scrollView = UIScrollView()
     let mainView = UIView()
+    let menuBtn = UIButton()
     let titleLabel = UILabel()
     let sourceLabel = UILabel()
     let textArea = UITextView()
@@ -44,6 +45,14 @@ class WordShowView: UIView {
         // self
         self.backgroundColor = .black.withAlphaComponent(0.6)
         self.isOpaque = false
+        // menuBtn
+        menuBtn.frame.size = CGSize(width: 30, height: 20)
+        menuBtn.frame.origin = CGPoint(x: main_w-(menuBtn.frame.width+20), y: 20)
+        menuBtn.tintColor = .systemGray3
+        menuBtn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        menuBtn.menu = UIMenu(title: "", children: self.getActions())
+        menuBtn.showsMenuAsPrimaryAction = true
+        mainView.addSubview(menuBtn)
         // title
         titleLabel.text = self.word.title
         titleLabel.font = .systemFont(ofSize: 24)
@@ -74,12 +83,7 @@ class WordShowView: UIView {
         sourceLabel.frame.size = CGSize(width: sourceLabel.getFitWidth(), height: sourceLabel.getFitHeight())
         sourceLabel.backgroundColor = .yellow
         mainView.addSubview(sourceLabel)
-        // closeBtn
-        closeBtn.frame = CGRect(x: main_w-40, y: 10, width: 30, height: 30)
-        closeBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
-        closeBtn.tintColor = .systemGray3
-        closeBtn.addTarget(self, action: #selector(cancelBtn_onTap(_:)), for: UIControl.Event.touchUpInside)
-        mainView.addSubview(closeBtn)
+        
         //mainView
         mainView.frame = CGRect(x: 0, y: 0, width: main_w,
                                 height: sourceLabel.frame.maxY+10 <= main_h ? main_h : sourceLabel.frame.maxY+10)
@@ -94,15 +98,56 @@ class WordShowView: UIView {
         scrollView.clipsToBounds = true
         scrollView.backgroundColor = .green
         self.addSubview(scrollView)
+        // closeBtn
+        closeBtn.frame.size = CGSize(width: 40, height: 40)
+        closeBtn.center = CGPoint(x: scrollView.center.x, y: scrollView.frame.maxY+closeBtn.frame.width/2+10)
+        closeBtn.setImage(UIImage(systemName: "xmark"), for: .normal)
+        closeBtn.tintColor = .systemBlue
+        closeBtn.backgroundColor = .systemBackground
+        closeBtn.layer.cornerRadius = closeBtn.frame.width/2
+        closeBtn.addTarget(self, action: #selector(cancelBtn_onTap(_:)), for: UIControl.Event.touchUpInside)
+        self.addSubview(closeBtn)
+    }
+    
+    /// 自画面クローズ処理
+    func closeSelf() {
+        // 親画面のNavigationBarとToolBarを再表示
+        self.parent.navigationController!.setNavigationBarHidden(false, animated: false)
+        self.parent.tabBarController!.tabBar.isHidden = false
+        
+        self.parent.tableView.reloadData()
+        self.removeFromSuperview()
     }
     
     /// クローズボタン押下処理
     /// - Parameter sender: closeBtn
     @objc func cancelBtn_onTap(_ sender: UIButton) {
-        // 親画面のNavigationBarとToolBarを再表示
-        self.parent.navigationController!.setNavigationBarHidden(false, animated: false)
-        self.parent.tabBarController!.tabBar.isHidden = false
+        self.closeSelf()
+    }
+    
+    /// メニューボタン定義
+    /// - Returns: 各メニューボタンのアクション
+    private func getActions() -> [UIAction] {
+        // EditEvent
+        let edit: UIAction = UIAction(title: "編集", image: UIImage(systemName: "pencil")) { (action) in
+            
+        }
         
-        self.removeFromSuperview()
+        // DeleteEvent
+        let delete: UIAction = UIAction(title: "削除", image: UIImage(systemName: "trash")) { (action) in
+            let alert = UIAlertController(title:"Caution", message:"削除されたものは復元できません。¥nよろしいですか？", preferredStyle:UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Delete" , style:UIAlertAction.Style.default){
+                (action:UIAlertAction)in
+                let _ = DeleteWordRecord().deleteWordRecord(word: self.word)
+                self.closeSelf()
+            })
+                    
+            alert.addAction(UIAlertAction(title: "Cancel", style:UIAlertAction.Style.cancel){
+                (action:UIAlertAction)in
+                // NonProcess
+            })
+            self.parent.present(alert, animated: true, completion:nil)
+        }
+        return [edit, delete]
     }
 }
