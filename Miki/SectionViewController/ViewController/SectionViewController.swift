@@ -41,12 +41,20 @@ class SectionViewController: UIViewController {
         addWordBtn.addTarget(self, action: #selector(addWordBtn_onTap(_:)), for: UIControl.Event.touchUpInside)
         self.view.addSubview(addWordBtn)
     }
+    /// 遷移前イベント
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddWord" {
             let nextVC = segue.destination as! EditViewController
             nextVC.source_media = self.parentMedia
             nextVC.source_section = self.thisSection
             nextVC.viewMode = .add
+            nextVC.parentView = self
+        } else if segue.identifier == "toEditWord" {
+            let nextVC = segue.destination as! EditViewController
+            nextVC.word = self.words[self.tableView.indexPathForSelectedRow!.row]
+            nextVC.source_media = self.parentMedia
+            nextVC.source_section = self.thisSection
+            nextVC.viewMode = .edit
             nextVC.parentView = self
         }
     }

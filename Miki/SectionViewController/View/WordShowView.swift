@@ -130,7 +130,8 @@ class WordShowView: UIView {
     private func getActions() -> [UIAction] {
         // EditEvent
         let edit: UIAction = UIAction(title: "編集", image: UIImage(systemName: "pencil")) { (action) in
-            
+            self.parent.performSegue(withIdentifier: "toEditWord", sender: self)
+            self.closeSelf()
         }
         
         // DeleteEvent

@@ -154,6 +154,7 @@
                     <navigationItem key="navigationItem" id="svL-Ua-G4N"/>
                     <connections>
                         <segue destination="AVx-yf-5s9" kind="presentation" identifier="toAddWord" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="YxS-cL-R6M"/>
+                        <segue destination="AVx-yf-5s9" kind="presentation" identifier="toEditWord" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="bbp-pY-hdX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioU-Gl-BfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -161,6 +162,9 @@
             <point key="canvasLocation" x="906" y="61"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bbp-pY-hdX"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
