@@ -35,7 +35,7 @@ class SelectMediaView: UIView {
         
         let view_frame = CGRect(x: self.frame.width*0.1, y: self.frame.height*0.1, width: self.frame.width*0.8, height: self.frame.height*0.7)
         let label_frame = CGRect(x: view_frame.width*0.5-80, y: 0, width: 160, height: 30)
-        let search_frame = CGRect()
+        // let search_frame = CGRect()
         let cancelBtn_frame = CGRect(x: 0, y: view_frame.height-60, width: view_frame.width*0.5, height: 60)
         let okBtn_frame = CGRect(x: cancelBtn_frame.maxX, y: view_frame.height-60, width: view_frame.width*0.5, height: 60)
         let table_frame = CGRect(x: 0, y: label_frame.maxY+10, width: view_frame.width, height: view_frame.height-(label_frame.height+cancelBtn_frame.height))
