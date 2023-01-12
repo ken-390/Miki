@@ -10,7 +10,6 @@ import UIKit
 class MediaViewController: UIViewController {
     var mediaView: MediaDetailView!
     var toolbar: MediaViewToolbar!
-    var tableView: UITableView!
     
     // Property
     var thisMedia: Media!
@@ -34,6 +33,13 @@ class MediaViewController: UIViewController {
             let nextVC = segue.destination as! SectionViewController
             nextVC.thisSection = self.selectedSection
             nextVC.parentMedia = thisMedia
+        }
+    }
+    /// 画面再表示
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.toolbar.mainView.chapterTableView != nil {
+            self.toolbar.mainView.chapterTableView.reloadData()
         }
     }
 }

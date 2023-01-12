@@ -136,8 +136,8 @@ class WordShowView: UIView {
         
         // DeleteEvent
         let delete: UIAction = UIAction(title: "削除", image: UIImage(systemName: "trash")) { (action) in
-            let alert = UIAlertController(title:"Caution", message:"削除されたものは復元できません。¥nよろしいですか？", preferredStyle:UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Delete" , style:UIAlertAction.Style.default){
+            let alert = UIAlertController(title:"Caution", message:"削除されたものは復元できません。\nよろしいですか？", preferredStyle:UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK" , style:UIAlertAction.Style.default){
                 (action:UIAlertAction)in
                 let _ = DeleteWordRecord().deleteWordRecord(word: self.word)
                 self.closeSelf()

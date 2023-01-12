@@ -35,9 +35,10 @@ class Dao_sectionItem {
     }
     
     // Delete
-    func delete(target: Results<Word>) -> Void{
-//        try! realm.write{
-//            realm.delete(target[0])
-//        }
+    func delete(section: SectionItem) -> Void{
+        let target = self.getRecordById(id: section.id)
+        try! realm.write{
+            realm.delete(target[0])
+        }
     }
 }
