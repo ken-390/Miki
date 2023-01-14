@@ -72,6 +72,7 @@
 		A6891C2A291F6EC800063617 /* MediaViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6891C29291F6EC800063617 /* MediaViewToolbar.swift */; };
 		A6891C2C292101C500063617 /* MediaRelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6891C2B292101C400063617 /* MediaRelsView.swift */; };
 		A6AE49E929703C6F004A8F32 /* DeleteSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE49E829703C6F004A8F32 /* DeleteSectionItem.swift */; };
+		A6AE49EB2972B232004A8F32 /* SectionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE49EA2972B232004A8F32 /* SectionEditView.swift */; };
 		A6C71D4E28DB46CB00E64A46 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C71D4D28DB46CB00E64A46 /* Word.swift */; };
 		A6CD186A292BADE200263705 /* UpdateSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD1869292BADE200263705 /* UpdateSectionItem.swift */; };
 		A6CD186C292BAFF000263705 /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD186B292BAFF000263705 /* SegmentCell.swift */; };
@@ -179,6 +180,7 @@
 		A6891C29291F6EC800063617 /* MediaViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewToolbar.swift; sourceTree = "<group>"; };
 		A6891C2B292101C400063617 /* MediaRelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRelsView.swift; sourceTree = "<group>"; };
 		A6AE49E829703C6F004A8F32 /* DeleteSectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSectionItem.swift; sourceTree = "<group>"; };
+		A6AE49EA2972B232004A8F32 /* SectionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEditView.swift; sourceTree = "<group>"; };
 		A6C71D4D28DB46CB00E64A46 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		A6CD1869292BADE200263705 /* UpdateSectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSectionItem.swift; sourceTree = "<group>"; };
 		A6CD186B292BAFF000263705 /* SegmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				A652ABDA2926FCD500393B57 /* SectionDetailView.swift */,
+				A6AE49EA2972B232004A8F32 /* SectionEditView.swift */,
 				A6CD188C296AD2E400263705 /* WordShowView.swift */,
 			);
 			path = View;
@@ -920,6 +923,7 @@
 				A6891C1F291BE0DA00063617 /* ClassByMedia.swift in Sources */,
 				A6891C21291F669E00063617 /* PCRelationship.swift in Sources */,
 				A6891BD528FB9FE500063617 /* GetRelationRecord.swift in Sources */,
+				A6AE49EB2972B232004A8F32 /* SectionEditView.swift in Sources */,
 				A63CCA8528F59C290094EB27 /* EventEditCell.swift in Sources */,
 				A67612C228E3B46000C81D19 /* DeleteWordRecord.swift in Sources */,
 				A6891BD928FBA50100063617 /* Dao_relation.swift in Sources */,

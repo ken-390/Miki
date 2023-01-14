@@ -49,7 +49,8 @@ class SectionDetailView: UIView {
     private func getActions() -> [UIAction] {
         // EditEvent
         let edit: UIAction = UIAction(title: "編集", image: UIImage(systemName: "pencil")) { (action) in
-            
+            let sectionEditView = SectionEditView(parent: self.parent, section: self.section)
+            self.parent.view.addSubview(sectionEditView)
         }
         
         // DeleteEvent
