@@ -39,6 +39,8 @@ class Dao_word {
             target[0].title = data.title
             target[0].type_id = data.type_id
             target[0].text = data.text
+            target[0].mediaId = data.mediaId
+            target[0].sectionId = data.sectionId
         }
     }
     

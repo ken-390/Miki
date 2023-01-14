@@ -35,9 +35,6 @@ class MediaViewToolbar: UIView{
             options: nil
         )
         segmentBar.valueDidChange = { segmentio, segmentIndex in
-            print("Selected item: ", segmentIndex)
-        }
-        segmentBar.valueDidChange = { segmentio, segmentIndex in
             self.mainView.showContentsBySegmentIdx(type: self.segmentCells[segmentIndex])
         }
         segmentBar.selectedSegmentioIndex = 0
