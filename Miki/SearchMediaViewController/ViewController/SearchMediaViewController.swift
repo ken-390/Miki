@@ -76,6 +76,11 @@ class SearchMediaViewController: UIViewController {
         }
     }
     
+    /// 画面再表示
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     @objc func addMediaBtn_onTap(_ sender: UIButton){
         let type = MediaType.allCases[self.mediaView.pageNum]
         
