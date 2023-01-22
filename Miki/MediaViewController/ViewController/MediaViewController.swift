@@ -42,4 +42,11 @@ class MediaViewController: UIViewController {
             self.toolbar.mainView.chapterTableView.reloadData()
         }
     }
+    
+    /// Viewの見た目を更新
+    func updateToolbarPosition() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+            self.toolbar.frame.origin = CGPoint(x: 0, y: self.mediaView.frame.maxY)
+        }, completion: nil)
+    }
 }

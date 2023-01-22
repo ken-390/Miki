@@ -14,6 +14,7 @@ class MediaDetailView: UIView{
     var authorLabel: UILabel!
     var summaryLabel: UITextView!
     var menuButton: UIButton!
+    var arrowBtn: UIButton!
     
     var parent: MediaViewController!
     
@@ -23,13 +24,11 @@ class MediaDetailView: UIView{
         super.init(frame: frame)
         
         let imageView_frame = CGRect(x: 10, y: self.frame.height*0.1, width: self.frame.width*0.4, height: self.frame.height*0.8)
-        let titleLabel_frame = CGRect(x: imageView_frame.maxX+20, y: imageView_frame.minY+10, width: 0, height: 0)
+        let titleLabel_frame = CGRect(x: imageView_frame.maxX+20, y: imageView_frame.minY+40, width: 0, height: 0)
         let authorLabel_frame = CGRect(x: titleLabel_frame.minX, y: 0, width: 0, height: 0)
-        let summariLabel_frame = CGRect(x: titleLabel_frame.minX, y: 0, width: self.frame.width*0.4, height: 0)
         let menuButton_frame = CGRect(x: self.frame.maxX-40, y: 16, width: 30, height: 30)
 
         // VIEW
-        self.setUnderLine(color: .systemGray4)
         // IMAGE
         self.imageView = UIImageView(frame: imageView_frame)
         imageView.contentMode = .scaleAspectFit
@@ -52,13 +51,15 @@ class MediaDetailView: UIView{
         authorLabel.frame.origin.y = self.titleLabel.frame.maxY+5
         self.addSubview(authorLabel)
         // SUMMARY
-        self.summaryLabel = UITextView(frame: summariLabel_frame)
+        self.summaryLabel = UITextView()
+        summaryLabel.isEditable = false
         summaryLabel.text = parent.thisMedia.summary
-        summaryLabel.frame.origin.y = self.authorLabel.frame.maxY+20
-        summaryLabel.frame.size.height = self.frame.height*0.9-summaryLabel.frame.minY
-        summaryLabel.layer.borderWidth = 1
-        summaryLabel.layer.borderColor = UIColor.systemGray4.cgColor
-        // summaryLabel.isEditable = false
+        summaryLabel.textColor = .systemGray2
+        summaryLabel.frame.size = CGSize(width: self.frame.width*0.7
+                                         , height: (self.parent.tabBarController?.tabBar.frame.minY)!-self.frame.maxX)
+        summaryLabel.sizeThatFits(summaryLabel.frame.size)
+        summaryLabel.center.x = self.center.x
+        summaryLabel.frame.origin.y = self.frame.size.height+5
         self.addSubview(summaryLabel)
         // BUTTON_MENU
         self.menuButton = UIButton(frame: menuButton_frame)
@@ -67,10 +68,34 @@ class MediaDetailView: UIView{
         menuButton.menu = UIMenu(title: "", children: self.getActions())
         menuButton.showsMenuAsPrimaryAction = true
         self.addSubview(menuButton)
+        // ARROW_BTN
+        self.arrowBtn = UIButton()
+        arrowBtn.frame.size = CGSize(width: 40, height: 30)
+        arrowBtn.frame.origin = CGPoint(x: self.frame.width-45, y: self.frame.height-35)
+        arrowBtn.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        arrowBtn.setImage(UIImage(systemName: "chevron.up"), for: .selected)
+        arrowBtn.tintColor = .systemGray3
+        arrowBtn.addTarget(self, action: #selector(arrowBtn_onTap(_:)), for: UIControl.Event.touchUpInside)
+        self.addSubview(arrowBtn)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// 矢印ボタン押下時処理
+    /// - Parameter sender: arrowBtn
+    @objc func arrowBtn_onTap(_ sender: UIButton) {
+        let extendRange = self.summaryLabel.frame.height+10
+        if(!sender.isSelected) {
+            sender.isSelected = true
+            self.frame.size.height = self.frame.size.height + extendRange
+        } else {
+            sender.isSelected = false
+            self.frame.size.height = self.frame.size.height - extendRange
+        }
+        // 親ViewControllerの見た目を更新
+        self.parent.updateToolbarPosition()
     }
     
     func getActions() -> [UIAction] {

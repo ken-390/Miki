@@ -30,6 +30,13 @@ extension UIView {
         addSubview(underline)
         bringSubviewToFront(underline)
     }
+    public func setOverLine(color: UIColor) {
+        let underline = UIView()
+        underline.frame = CGRect(x: 0, y: 0, width: frame.width, height: 0.5)
+        underline.backgroundColor = color
+        addSubview(underline)
+        bringSubviewToFront(underline)
+    }
 }
 
 extension UILabel {
