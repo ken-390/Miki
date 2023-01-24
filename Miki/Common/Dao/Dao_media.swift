@@ -40,4 +40,12 @@ class Dao_media {
             target[0].author_id = data.author_id
         }
     }
+    
+    // Delete
+    func delete(id: String) -> Void{
+        let target = self.getMediaById(id: id)
+        try! realm.write{
+            realm.delete(target[0])
+        }
+    }
 }
