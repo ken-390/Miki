@@ -26,6 +26,7 @@ class MediaViewToolbar: UIView{
         
         // MAINVIEW
         self.mainView = MediaRelsView(parent: self.parent, frame: mainView_frame)
+        self.mainView.backgroundColor = .systemBackground
         self.addSubview(mainView)
         // SEGUMENT
         self.segmentBar = Segmentio(frame: segmentBar_frame)
@@ -38,7 +39,8 @@ class MediaViewToolbar: UIView{
             self.mainView.showContentsBySegmentIdx(type: self.segmentCells[segmentIndex])
         }
         segmentBar.selectedSegmentioIndex = 0
-        segmentBar.setUnderLine(color: .systemGray4)
+        segmentBar.setOverLine(color: .systemGray4)
+        segmentBar.backgroundColor = .systemBackground
         self.addSubview(segmentBar)
     }
     

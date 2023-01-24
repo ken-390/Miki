@@ -63,7 +63,8 @@ class WordShowView: UIView {
         // text
         textArea.text = self.word.text
         textArea.frame.origin = CGPoint(x: main_w*0.1, y: titleLabel.frame.maxY+10)
-        textArea.frame.size = CGSize(width: main_w*0.8, height: textArea.contentSize.height)
+        textArea.frame.size = CGSize(width: main_w*0.8, height: 0)
+        textArea.sizeToFit()
         textArea.backgroundColor = .blue
         mainView.addSubview(textArea)
         // source
