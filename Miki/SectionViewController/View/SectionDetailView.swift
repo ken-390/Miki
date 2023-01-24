@@ -58,14 +58,6 @@ class SectionDetailView: UIView {
             let alert = UIAlertController(title:"Caution", message:"削除されたものは復元できません\nよろしいですか？", preferredStyle:UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK" , style:UIAlertAction.Style.default){
                 (action:UIAlertAction)in
-                // 削除対象に紐づく単語の出典を「その他」にする
-                let words = GetWordRecords().getWordsByParent(media_id: self.section.parentMedia_id, section_id: self.section.id)
-                for i in 0..<words.count {
-                    let word_af = words[i]
-                    word_af.mediaId = ""
-                    word_af.sectionId = ""
-                    let _ = UpdateWordRecord().updateWordRecord(before: words[i], after: word_af)
-                }
                 // セクションを削除して親ビューコントローラを閉じる
                 let _ = DeleteSectionItem.deleteSectionItem(sectionItem: self.section)
                 

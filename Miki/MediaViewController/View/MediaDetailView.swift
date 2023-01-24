@@ -80,7 +80,8 @@ class MediaDetailView: UIView{
             self.parent.view.addSubview(MediaEditView(parent: self.parent))
         }
         let delete: UIAction = UIAction(title: "削除", image: UIImage(systemName: "trash")) { (action) in
-            
+            _ = DeleteMedia.deleteMedia(id: self.parent.thisMedia.id)
+            self.parent.navigationController!.popViewController(animated: true)
         }
         return [edit, delete]
     }
