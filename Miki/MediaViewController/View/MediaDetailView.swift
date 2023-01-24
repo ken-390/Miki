@@ -55,9 +55,11 @@ class MediaDetailView: UIView{
         summaryLabel.isEditable = false
         summaryLabel.text = parent.thisMedia.summary
         summaryLabel.textColor = .systemGray2
-        summaryLabel.frame.size = CGSize(width: self.frame.width*0.7
-                                         , height: (self.parent.tabBarController?.tabBar.frame.minY)!-self.frame.maxX)
-        summaryLabel.sizeThatFits(summaryLabel.frame.size)
+        let maxH: CGFloat = 200
+        let size = summaryLabel.sizeThatFits(CGSize(width: self.frame.width*0.7
+                                                    , height: CGFloat.greatestFiniteMagnitude))
+        summaryLabel.frame.size.width = size.width
+        summaryLabel.frame.size.height = size.height > maxH ? maxH : size.height
         summaryLabel.center.x = self.center.x
         summaryLabel.frame.origin.y = self.frame.size.height+5
         self.addSubview(summaryLabel)
